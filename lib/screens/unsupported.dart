@@ -14,7 +14,7 @@ class BarcodeScanner extends StatelessWidget {
       this.lineColor = "#ff6666",
       this.cancelButtonText = "Cancel",
       this.isShowFlashIcon = false,
-      this.scanType = ScanType.barcode,
+      this.scanType = ScanType.qr,
       required this.onScanned,
       this.appBarTitle,
       this.centerTitle})
