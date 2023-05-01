@@ -51,13 +51,16 @@ class WindowBarcodeScanner extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: FutureBuilder<bool>(
+      body: Center(
+        child: FutureBuilder<bool>(
           future: initPlatformState(
             controller: controller,
           ),
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               return Webview(
+                height: 900,
+                width: 900,
                 controller,
                 permissionRequested: (url, permissionKind, isUserInitiated) =>
                     _onPermissionRequested(
@@ -76,7 +79,39 @@ class WindowBarcodeScanner extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }),
+          },
+        ),
+      ),
+      //     Container(
+      //   constraints: const BoxConstraints(maxWidth: 320, maxHeight: 320),
+      //   child: FutureBuilder<bool>(
+      //       future: initPlatformState(
+      //         controller: controller,
+      //       ),
+      //       builder: (context, snapshot) {
+      //         if (snapshot.hasData && snapshot.data != null) {
+      //           return Webview(
+      //             controller,
+      //             permissionRequested:
+      //                 (url, permissionKind, isUserInitiated) =>
+      //                     _onPermissionRequested(
+      //               url: url,
+      //               kind: permissionKind,
+      //               isUserInitiated: isUserInitiated,
+      //               context: context,
+      //               isPermissionGranted: isPermissionGranted,
+      //             ),
+      //           );
+      //         } else if (snapshot.hasError) {
+      //           return Center(
+      //             child: Text(snapshot.error.toString()),
+      //           );
+      //         }
+      //         return const Center(
+      //           child: CircularProgressIndicator(),
+      //         );
+      //       }),
+      // )
     );
   }
 
